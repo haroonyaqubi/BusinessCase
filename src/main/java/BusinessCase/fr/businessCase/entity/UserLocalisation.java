@@ -31,7 +31,6 @@ public class UserLocalisation {
     @Column(nullable = false)
     private float rating;
 
-
     @ManyToOne
     @JoinColumn(nullable = false)
     private Localisation localisation;

@@ -39,7 +39,6 @@ public class Localisation {
     private String longitude;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "localisation")

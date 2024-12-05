@@ -1,7 +1,7 @@
 package BusinessCase.fr.businessCase.dto.ChargingStation;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +14,19 @@ public class ChargingStationCreateDTO {
     @NotBlank
     private String name;
 
-    @NotBlank
+    @NotNull
     private int hourlyRate;
 
     @NotBlank
     private String accessDirectives;
 
-    @NotBlank
+    @NotNull
     private boolean onFoot;
+
+    @NotNull
+    private Long powerId;
+
+    @NotNull
+    private Long localisationId;
+
 }

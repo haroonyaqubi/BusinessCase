@@ -1,11 +1,12 @@
 package BusinessCase.fr.businessCase.entity;
 
+import BusinessCase.fr.businessCase.json_views.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,23 @@ public class ChargingStation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @JsonView(JsonViews.ChargingView.class)
     private String uuid;
 
     @Column(nullable = false)
+    @JsonView(JsonViews.ChargingView.class)
     private String name;
 
     @Column(nullable = false)
+    @JsonView(JsonViews.ChargingView.class)
     private int hourlyRate;
 
     @Column(nullable = false)
+    @JsonView(JsonViews.ChargingView.class)
     private String accessDirectives;
 
     @Column(nullable = false)
+    @JsonView(JsonViews.ChargingView.class)
     private boolean onFoot;
 
     @Column(nullable = false)

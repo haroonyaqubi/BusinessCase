@@ -30,7 +30,6 @@ public class Review {
     @Column(nullable = false)
     private float rating;
 
-
     @ManyToOne
     @JoinColumn(nullable = false)
     private ChargingStation chargingStation;
