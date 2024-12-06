@@ -1,0 +1,28 @@
+stages:
+  - build
+  - package
+
+build war:
+  stage: build
+  image: maven:3.9.9
+  cache:
+    paths:
+      - .m2/repository
+  variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+  script:
+    - mvn clean package
+  artifacts:
+    paths:
+      - target/**/*
+
+create image:
+  stage: package
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA ./
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
