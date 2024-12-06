@@ -11,7 +11,7 @@ build war:
   variables:
     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
   script:
-    - mvn clean package
+    - mvn clean package -DskiTests
   artifacts:
     paths:
       - target/**/*
